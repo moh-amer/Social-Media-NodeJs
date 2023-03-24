@@ -1,11 +1,14 @@
-const express = require("express");
-const db = require("./dbConnection");
-const morgan = require("morgan");
-require("dotenv").config();
-const user = require("./router/useRouter");
+import  express from "express"
+import  db  from "./dbConnection.js" ;
+import morgan from "morgan" ;
+import  user from "./router/useRouter.js";
+import * as dotenv from 'dotenv'
+dotenv.config()
 const prt = process.env.PORT;
 
+db.connectDB()
 const app = express();
+
 app.use(morgan("combined"));
 app.use(express.json());
 

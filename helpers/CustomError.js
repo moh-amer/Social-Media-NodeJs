@@ -6,4 +6,4 @@ class customError extends Error
     this.errors = errors ;
     }
 }
-module.exports= customError ;
+export default customError ;

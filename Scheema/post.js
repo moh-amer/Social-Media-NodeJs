@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
-const _ = require("lodash");
-require("dotenv").config();
+import mongoose from 'mongoose';
+import  _ from "lodash";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const Schema = mongoose.Schema;
 const post = new Schema({
@@ -15,4 +15,4 @@ const post = new Schema({
 );
 
 const posts = mongoose.model('posts', post);
-module.exports = posts;
+export default posts;

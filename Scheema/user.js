@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
-const _ = require("lodash");
-require("dotenv").config();
+import mongoose from 'mongoose';
+import bcrypt from "bcryptjs";
+import  _ from "lodash";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-const salt = 12;
+const salt = process.env.salt;
 const Schema = mongoose.Schema;
 const users = new Schema({
     username: {
@@ -33,7 +34,7 @@ const users = new Schema({
 
 users.pre('save', async function (next) {
     if (this.isModified('password')) {
-        const hashedpassword = hashpass = await bcrypt.hash(this.password, salt);
+        const hashedpassword = await bcrypt.hash(this.password,parseInt(salt));
         this.password = hashedpassword;
     }
     next();
@@ -44,4 +45,4 @@ users.methods.CompairPass = async function (password) {
 }
 
 const user = mongoose.model('users', users);
-module.exports = user;
+export default user;

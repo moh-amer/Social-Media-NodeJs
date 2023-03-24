@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
-const _ = require("lodash");
-require("dotenv").config();
+import mongoose from 'mongoose';
+import  _ from "lodash";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const Schema = mongoose.Schema;
 const comment = new Schema({
@@ -20,4 +20,4 @@ const comment = new Schema({
 );
 
 const comments = mongoose.model('comments', comment);
-module.exports = comments;
+export default comments;
